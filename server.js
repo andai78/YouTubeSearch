@@ -3,10 +3,13 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 
+const api = require('./server/routes/api');
 const app = express();
 
 // creation d'un middleware pour acceder au repertoire dist
 app.use(express.static(path.join(__dirname, 'dist')));
+
+app.use('/api',api);
 
 app.get('/', (req, res) => {
     res.send('app works')
